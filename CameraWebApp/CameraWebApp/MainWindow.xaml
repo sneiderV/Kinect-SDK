@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CameraWebApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+	<Grid>
+		<Image x:Name="ctrImg_mostrarImagenes" HorizontalAlignment="Left" Height="317" Margin="37,92,0,0" VerticalAlignment="Top" Width="724"/>
+		<Label Content="Ejemplo EVG" HorizontalAlignment="Left" Margin="346,48,0,0" VerticalAlignment="Top"/>
+
+	</Grid>
 </Window>
