@@ -1,1 +1,3 @@
-Kinect-V2.0
+## Kinect
+
+The first projects use the SDK 1.8 reference.
