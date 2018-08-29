@@ -66,8 +66,9 @@ namespace Wpf_MVA_app
                     }
                 }
                 irDataConverted.CopyTo(irBitmap,irBitmap.PixelHeight);
-                irDataConverted.CopyTo(irBitmap);
-                irBitmap.Invalidate();
+
+                //irDataConverted.CopyTo(irBitmap.PixelBuffer);
+                //irBitmap.Invalidate(); //redibuja la imagen.
             }
         }
     }
