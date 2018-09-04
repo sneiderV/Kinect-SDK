@@ -52,6 +52,7 @@
                     </ScrollViewer>
                 </Grid>
             </ContentControl>
+            <local:ButtonSample HorizontalAlignment="Left" Height="100" Margin="-163,276,0,0" VerticalAlignment="Top" Width="100"/>
         </Grid>
     </k:KinectRegion>
 </Window>
