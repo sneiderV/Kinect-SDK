@@ -5,20 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FourStreamsKinect_v2"
         mc:Ignorable="d"
-        Title="The 4 streams of kinect" Height="800" Width="1366" Loaded="Window_Loaded">
+        Title="The 4 streams of kinect" Height="800" Width="1306" Loaded="Window_Loaded">
     <Grid>
-        <Image HorizontalAlignment="Left" Height="717" Margin="10,10,0,0" VerticalAlignment="Top" Width="1338"/>
-        <Canvas HorizontalAlignment="Left" Height="717" Margin="10,10,0,0" VerticalAlignment="Top" Width="1338"/>
+        <Image x:Name="i_camera" HorizontalAlignment="Left" Height="717" Margin="0,10,0,0" VerticalAlignment="Top" Width="1338"/>
+        <Canvas x:Name="c_body" HorizontalAlignment="Center" Height="759" Margin="10,10,0,0" VerticalAlignment="Top" Width="1338"/>
 
-        <Grid HorizontalAlignment="Center" Height="191" Margin="1258,0,0,0" VerticalAlignment="Top" Width="100" Background="#99000000">
-            <Button Content="Camera" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Background="White" BorderBrush="#FF707070" FontFamily="Tw Cen MT Condensed Extra Bold" ClickMode="Press" Click="Camera_Click"/>
-            <Button Content="Depth" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="75" Background="White" BorderBrush="#FF707070" FontFamily="Tw Cen MT Condensed Extra Bold" ClickMode="Press" Click="Depth_Click"/>
-            <Button Content="Infrared" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Width="75" Background="White" FontFamily="Tw Cen MT Condensed Extra Bold" ClickMode="Press" Click="Infrared_Click"/>
-            <Button Content="Body" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Width="75"  Background="White" FontFamily="Tw Cen MT Condensed Extra Bold" ClickMode="Press" Click="Body_Click"/>
+        <Grid HorizontalAlignment="Center" Height="201" Margin="10,10,1134,0" VerticalAlignment="Top" Width="154" Background="#99000000">
+            <Button Content="Camera" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="134" Background="White" BorderBrush="#FF707070" FontFamily="Tw Cen MT Condensed Extra Bold" ClickMode="Press" Click="Camera_Click" Height="46"/>
+            <Button Content="Depth" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="134" Background="White" BorderBrush="#FF707070" FontFamily="Tw Cen MT Condensed Extra Bold" ClickMode="Press" Click="Depth_Click" Height="41"/>
+            <Button Content="Infrared" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Width="134" Background="White" FontFamily="Tw Cen MT Condensed Extra Bold" ClickMode="Press" Click="Infrared_Click" Height="41"/>
+            <Button Content="Body" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Width="134"  Background="White" FontFamily="Tw Cen MT Condensed Extra Bold" ClickMode="Press" Click="Body_Click" Height="37"/>
 
         </Grid>
-
-
-
     </Grid>
 </Window>

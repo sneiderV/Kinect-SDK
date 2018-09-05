@@ -22,11 +22,19 @@ namespace FourStreamsKinect_v2
     public partial class MainWindow : Window
     {
         KinectSensor sKinect;
-        MultiSourceFrameReader sReader; 
+        MultiSourceFrameReader sReader;
+        IList<Body> bodies;
+        Mode tipoFrame = Mode.Color;
 
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        //tipos de frames
+        public enum Mode
+        {
+            Color, Depth, Infrared, Body
         }
 
         //asignamos el kinect que este conectado
@@ -55,27 +63,48 @@ namespace FourStreamsKinect_v2
             //abrir el frame de color
             using (var frame = reference.ColorFrameReference.AcquireFrame())
             {
+                if(i_camera.Visibility == Visibility.Hidden)
+                {
+                    i_camera.Visibility = Visibility.Visible;
+                }
                 if (frame != null)
                 {
-
+                    if (tipoFrame == Mode.Color)
+                    {
+                        i_camera.Source = ReadersFrames.ToBitmap(frame);
+                    }
                 }
             }
 
             //abrir el frame de profundidad
             using (var frame = reference.DepthFrameReference.AcquireFrame())
             {
+                if (i_camera.Visibility == Visibility.Hidden)
+                {
+                    i_camera.Visibility = Visibility.Visible;
+                }
                 if (frame != null)
                 {
-
+                    if (tipoFrame == Mode.Depth)
+                    {
+                        i_camera.Source = ReadersFrames.ToBitmap(frame);
+                    }
                 }
             }
 
             //abrir el frame de infrarrojo
             using (var frame = reference.InfraredFrameReference.AcquireFrame())
             {
+                if (i_camera.Visibility == Visibility.Hidden)
+                {
+                    i_camera.Visibility = Visibility.Visible;
+                }
                 if (frame != null)
                 {
-
+                    if (tipoFrame == Mode.Infrared)
+                    {
+                        i_camera.Source = ReadersFrames.ToBitmap(frame);
+                    }
                 }
             }
 
@@ -84,29 +113,49 @@ namespace FourStreamsKinect_v2
             {
                 if (frame != null)
                 {
+                    c_body.Children.Clear(); //borramos cada esqueleto que va pasando
 
+                    if (tipoFrame == Mode.Body)
+                    {
+                        i_camera.Visibility = Visibility.Hidden; //escondemos el fondo
+                        bodies = new Body[frame.BodyFrameSource.BodyCount];
+
+                        frame.GetAndRefreshBodyData(bodies); // ???
+
+                        foreach (var bo in bodies)
+                        {
+                            if (bo != null)
+                            {
+                                if (bo.IsTracked)
+                                {
+                                    // Dibujar las articulaciones...
+                                    c_body.DrawSkeleton(bo);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
 
         private void Body_Click(object sender, RoutedEventArgs e)
         {
-
+            tipoFrame = Mode.Body;
         }
 
         private void Infrared_Click(object sender, RoutedEventArgs e)
         {
-
+            tipoFrame = Mode.Infrared;
         }
 
         private void Depth_Click(object sender, RoutedEventArgs e)
         {
-
+            tipoFrame = Mode.Depth;
         }
 
         private void Camera_Click(object sender, RoutedEventArgs e)
         {
-
+            tipoFrame = Mode.Color;
         }
 
        
