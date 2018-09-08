@@ -43,7 +43,7 @@ namespace ControlGestureHand
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 30; i++)
             {
                 var button = new Button { Content = i, Height=100, Width=100};
 
