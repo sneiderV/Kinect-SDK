@@ -6,12 +6,18 @@
         xmlns:k="http://schemas.microsoft.com/kinect/2014"
         xmlns:local="clr-namespace:ControlGestureHand"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <k:KinectRegion x:Name="mikinectRegion">
-            <Grid HorizontalAlignment="Left" Height="192" Margin="575,227,0,0" VerticalAlignment="Top" Width="217" Background="#FF4F4F4F">
-                <k:KinectUserViewer k:KinectRegion.KinectRegion = "{Binding ElementName = kinectRegion}"  Height = "100" Margin="53,51,43,0"  />
-
+            <Grid HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792" Background="#FF4F4F4F">
+                <k:KinectUserViewer k:KinectRegion.KinectRegion = "{Binding ElementName = kinectRegion}"  Height = "100" Margin="671,319,0,0"  />
+                <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="154" Click="Button_Click"/>
+                <ScrollViewer x:Name="scrollViewer" Margin="0,169,0,0" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled" 
+                              k:KinectRegion.IsScrollInertiaEnabled="true">
+                    <StackPanel x:Name="scrollContent" Orientation="Horizontal">
+                        
+                    </StackPanel>
+                </ScrollViewer>
             </Grid>
         </k:KinectRegion>
 
