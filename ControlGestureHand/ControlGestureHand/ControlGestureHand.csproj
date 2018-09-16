@@ -99,5 +99,91 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\12.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\13.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\14.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\15.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\16.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\17.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\18.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\19.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\20.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\22.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\23.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\25.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\26.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\27.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
