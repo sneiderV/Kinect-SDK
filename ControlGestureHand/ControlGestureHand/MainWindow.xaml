@@ -6,29 +6,44 @@
         xmlns:k="http://schemas.microsoft.com/kinect/2014"
         xmlns:local="clr-namespace:ControlGestureHand"
         mc:Ignorable="d"
-        Title="MainWindow" Height="608.173" Width="1258.098" Loaded="Window_Loaded" Closing="Window_Closing"
+        Title="MainWindow" Height="808.734" Width="1258.098" Loaded="Window_Loaded" Closing="Window_Closing"
         >
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
         <k:KinectRegion x:Name="mikinectRegion">
-            <Grid HorizontalAlignment="Left" Height="567" VerticalAlignment="Top" Width="1240" Background="#FF4F4F4F">
-                <Image Source="images/5.jpg" Margin="165,10,509,383" Visibility="Visible">
 
-                </Image>
-                <k:KinectUserViewer k:KinectRegion.KinectRegion = "{Binding ElementName = kinectRegion}"  Height = "100" Margin="671,319,0,0"  />
-                <Button HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="303" Height="164" Click="Button_Click">
-                    <Button.Background>
-                        <ImageBrush ImageSource="images/7.jpg"/>
-                    </Button.Background>
-                </Button>
-                <ScrollViewer x:Name="scrollViewer" Margin="0,174,0,0" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled" 
-                              k:KinectRegion.IsScrollInertiaEnabled="true">
-                    <StackPanel x:Name="miScrollContent" Orientation="Horizontal">
+            <Grid VerticalAlignment="Top" Width="1240" Background="#FF494E63">
+                <TextBlock x:Name="tx_b_descripcion" HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Descripcción" VerticalAlignment="Top" Height="53" Width="499" FontSize="20"/>
 
-                    </StackPanel>
+                <k:KinectUserViewer k:KinectRegion.KinectRegion = "{Binding ElementName = kinectRegion}"  Height = "103" Margin="1078,0,0,0" Width="162"  />
+                <k:KinectUserViewer Height="100" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="888,3,232,0" Width="120" />
+                <Grid Grid.Row="0">
+                <Rectangle HorizontalAlignment="Left" Height="66" Margin="0,108,0,0" VerticalAlignment="Top" Width="1240">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="Images/cinta.jpg"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                </Grid>
+                <Grid>
+                <ScrollViewer x:Name="scrollViewer" Margin="0,174,0,66" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" 
+                              k:KinectRegion.IsScrollInertiaEnabled="true" Background="Black">
+                    <StackPanel x:Name="miScrollContent" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"></StackPanel>
                 </ScrollViewer>
-                <TextBlock x:Name="tx_b_descripcion" HorizontalAlignment="Left" Margin="599,90,0,0" TextWrapping="Wrap" Text="Descripcción" VerticalAlignment="Top" Height="53" Width="640" FontSize="20"/>
-            </Grid>
-        </k:KinectRegion>
+                </Grid>
+                <Grid Grid.Row="2">
+                <Rectangle Height="66" Margin="0,707,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="1240">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="Images/cinta.jpg"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                </Grid>
 
+            </Grid>
+
+        </k:KinectRegion>
     </Grid>
 </Window>
