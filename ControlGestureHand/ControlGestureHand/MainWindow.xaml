@@ -6,40 +6,43 @@
         xmlns:k="http://schemas.microsoft.com/kinect/2014"
         xmlns:local="clr-namespace:ControlGestureHand"
         mc:Ignorable="d"
-        Title="MainWindow" Height="808.734" Width="1258.098" Loaded="Window_Loaded" Closing="Window_Closing"
+        Title="MainWindow" Height="808.734" Width="1534.098" Loaded="Window_Loaded" Closing="Window_Closing"
         >
-    <Grid>
-        <Grid.RowDefinitions>
+    <Grid Margin="0,0,291,0">
+        <!-- <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
+        </Grid.RowDefinitions>  -->
+        <Grid Margin="1240,0,-297,0" Height="773" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="292" Background="Black">
+            <k:KinectUserViewer Height="196" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,567,10,0" Width="282" />
+            <TextBlock HorizontalAlignment="Left" Margin="35,471,0,0" TextWrapping="Wrap" Text="can you see yourself here?" VerticalAlignment="Top" Foreground="#FFFDECEC" FontSize="36" Cursor="Arrow"/>
+            <TextBlock x:Name="tx_b_descripcion" HorizontalAlignment="Left" Margin="10,33,0,0" TextWrapping="Wrap" Text="Descripcción" VerticalAlignment="Top" Height="53" Width="184" FontSize="20" Foreground="#FF6DDEF0"/>
+        </Grid>
         <k:KinectRegion x:Name="mikinectRegion">
 
             <Grid VerticalAlignment="Top" Width="1240" Background="#FF494E63">
-                <TextBlock x:Name="tx_b_descripcion" HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Descripcción" VerticalAlignment="Top" Height="53" Width="499" FontSize="20"/>
 
-                <k:KinectUserViewer k:KinectRegion.KinectRegion = "{Binding ElementName = kinectRegion}"  Height = "103" Margin="1078,0,0,0" Width="162"  />
-                <k:KinectUserViewer Height="100" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="888,3,232,0" Width="120" />
-                <Grid Grid.Row="0">
-                <Rectangle HorizontalAlignment="Left" Height="66" Margin="0,108,0,0" VerticalAlignment="Top" Width="1240">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="Images/cinta.jpg"/>
-                    </Rectangle.Fill>
-                </Rectangle>
+                <!-- <k:KinectUserViewer k:KinectRegion.KinectRegion = "{Binding ElementName = kinectRegion}"  Height = "103" Margin="1078,0,0,0" Width="162"  /> -->
+
+                <Grid Margin="0,0,0,707" Height="66" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1240" >
+                    <Rectangle HorizontalAlignment="Left" Height="66" VerticalAlignment="Bottom" Width="1240" Margin="0,0,0,0">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="Images/cinta.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
                 </Grid>
-                <Grid>
-                <ScrollViewer x:Name="scrollViewer" Margin="0,174,0,66" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" 
+                <Grid Height="707" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="1240">
+                    <ScrollViewer x:Name="scrollViewer" Margin="0,0,0,66" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled" 
                               k:KinectRegion.IsScrollInertiaEnabled="true" Background="Black">
-                    <StackPanel x:Name="miScrollContent" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"></StackPanel>
-                </ScrollViewer>
+                        <StackPanel x:Name="miScrollContent" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"></StackPanel>
+                    </ScrollViewer>
                 </Grid>
-                <Grid Grid.Row="2">
-                <Rectangle Height="66" Margin="0,707,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="1240">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="Images/cinta.jpg"/>
-                    </Rectangle.Fill>
-                </Rectangle>
+                <Grid Margin="0,671,0,30" >
+                    <Rectangle Margin="0,36,0,-36" HorizontalAlignment="Right" Width="1240">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="Images/cinta.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
                 </Grid>
 
             </Grid>
