@@ -46,44 +46,76 @@ namespace ControlGestureHand
 
            // leerJson();
         }
-/*
-        struct MyFile
-        {
-            public String directory;
-            public ImageInfo[] images;
-        }
+        /*
+                struct MyFile
+                {
+                    public String directory;
+                    public ImageInfo[] images;
+                }
 
-         struct ImageInfo
-        {
-            public String filename;
-            public String title;
-        }
+                 struct ImageInfo
+                {
+                    public String filename;
+                    public String title;
+                }
 
-        private void leerJson()
-        {
+                private void leerJson()
+                {
 
-            //string urIm = "Data/dataImages.json";
-            //Uri resourceUri = new Uri(urIm, UriKind.Relative);
+                    //string urIm = "Data/dataImages.json";
+                    //Uri resourceUri = new Uri(urIm, UriKind.Relative);
 
-            //var stream = File.OpenRead("Data/dataImages.json");
+                    //var stream = File.OpenRead("Data/dataImages.json");
 
-            //String p = @"..\..\..\Data\dataImages.json";
-            //MyFile f = JsonConvert.DeserializeObject<MyFile>("Data/dataImages.json");
+                    //String p = @"..\..\..\Data\dataImages.json";
+                    //MyFile f = JsonConvert.DeserializeObject<MyFile>("Data/dataImages.json");
 
-        }*/
-
+                }*/
+        
+        string[] descrip = new string[27]
+                   { "Bloque W. Facultad de Ingeniería",
+                      "Francisco Rueda",
+                      "Bloque W. Facultad de Ingeniería",
+                      "Joaquín Oramas, Director del Centro de Computo",
+                      "Fanny Córdoba de la Rotta, Secretaria General Facultad de Ingeniería",
+                      "Bloque W",
+                      "Camino hacia la Facultad de Ingeniería",
+                      "Almuerzo en honor a los ingenieros Uniandinos",
+                      "Almuerzo en honor a los ingenieros Uniandinos",
+                      "Exposición de textiles",
+                      "Jose Tiberio Hernández",
+                      "Edificios Pedro Navas y Centro de Computo",
+                      "Ceremonia de grados",
+                      "Sala de Computo Universidad de los Andes",
+                      "Reunión grupo de ingenieros",
+                      "Ceremonia de graduación 1973",
+                      "Centro de Cómputo",
+                      "Reunión de exalumnos",
+                      "Ceremonia de graduación 1972",
+                      "Frente Bloque W",
+                      "Xavier Caro Restrepo, Director del Centro de Computo, 1970",
+                      "Inauguración del edificio de la Facultad de Ingeniería",
+                      "Computador IBM 1130",
+                      "Computador análogo TR 48",
+                      "Computador IBM 1130",
+                      "Rector Eduardo Aldana Valdéz, 1973-1975",
+                      "Joaquín Oramas, Director del Centro de Cómputo"
+                   };
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //var brush = new ImageBrush();
-            for (int i = 1; i < 28; i++)
-            {
+            for (int i = 0; i < 27; i++)
+            {         
                 //var button = new Button { Content = i, Height=200, Width=200};
                 var button = new Button();
                 button.Name = "i"+i.ToString();
-                button.ContentStringFormat = i.ToString();
-                              
+
+                //button.ContentStringFormat = i.ToString();
+                //button.ContentStringFormat = "-> " + i + descrip[i];
+                button.ContentStringFormat = descrip[i];
+
                 // si el build action de la imagen es resource
-                string urIm = "Images/"+i+".jpg";
+                string urIm = "Images/"+(i+1)+".jpg";
                 Uri resourceUri = new Uri(urIm, UriKind.Relative);
                 StreamResourceInfo streamInfo = Application.GetResourceStream(resourceUri);
                 BitmapFrame temp = BitmapFrame.Create(streamInfo.Stream);
@@ -147,13 +179,13 @@ namespace ControlGestureHand
         {
             String res = sender.ToString();
             Button b = sender as Button;
-            String n = "no hay boton";
+            String n = "no hay información para el botón";
             if (b!=null)
             {
                 //n = b.Name.ToString();
                 n = b.ContentStringFormat;
             }
-            tx_b_descripcion.Text = "changed the button: "+ n ;
+            tx_b_descripcion.Text = n ;
         }
 
         //libero los recursos de la kinect 

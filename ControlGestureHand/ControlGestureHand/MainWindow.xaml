@@ -13,10 +13,22 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>  -->
-        <Grid Margin="1240,0,-297,0" Height="773" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="292" Background="Black">
+        <Grid Margin="1240,0,-297,0" Height="778" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="292" Background="Black">
             <k:KinectUserViewer Height="196" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,567,10,0" Width="282" />
-            <TextBlock HorizontalAlignment="Left" Margin="35,471,0,0" TextWrapping="Wrap" Text="can you see yourself here?" VerticalAlignment="Top" Foreground="#FFFDECEC" FontSize="36" Cursor="Arrow"/>
-            <TextBlock x:Name="tx_b_descripcion" HorizontalAlignment="Left" Margin="10,33,0,0" TextWrapping="Wrap" Text="Descripcción" VerticalAlignment="Top" Height="53" Width="184" FontSize="20" Foreground="#FF6DDEF0"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,522,0,0" TextWrapping="Wrap" Text="¿Puedes verte aquí?" VerticalAlignment="Top" Foreground="#FFFDECEC" Cursor="Arrow" Width="255" FontSize="30" FontStyle="Italic"/>
+            <TextBlock HorizontalAlignment="Center" Margin="22,337,27,0" TextWrapping="Wrap" Text="Tu comentario nos interesa" VerticalAlignment="Top" Foreground="#FFFDECEC" Cursor="Arrow" Width="243" FontSize="30" FontStyle="Italic"/>
+            <TextBlock x:Name="tx_b_descripcion" HorizontalAlignment="Left" Margin="22,153,0,0" TextWrapping="Wrap" Text="Selecciona una imagen" VerticalAlignment="Top" Height="184" Width="255" FontSize="30" Foreground="#FFD1BB3C" FontStyle="Italic"/>
+
+            <Rectangle HorizontalAlignment="Left" Height="100" Margin="94,417,0,0" Stroke="Black" VerticalAlignment="Top" Width="100">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="Images/QR_Form.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle HorizontalAlignment="Left" Height="153" Stroke="Black" VerticalAlignment="Top" Width="292">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="Images/50-anos-enge-sistemas-n.jpg"/>
+                </Rectangle.Fill>
+            </Rectangle>
         </Grid>
         <k:KinectRegion x:Name="mikinectRegion">
 

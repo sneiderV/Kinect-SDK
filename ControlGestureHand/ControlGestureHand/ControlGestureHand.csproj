@@ -195,5 +195,13 @@
   <ItemGroup>
     <Resource Include="Images\cinta.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\QR_Form.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50-anos-enge-sistemas-n.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
