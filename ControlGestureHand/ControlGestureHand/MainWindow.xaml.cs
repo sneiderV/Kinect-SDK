@@ -74,9 +74,9 @@ namespace ControlGestureHand
         
         string[] descrip = new string[27]
                    { "Bloque W. Facultad de Ingeniería",
-                      "Francisco Rueda",
+                     "Francisco Rueda",
                       "Bloque W. Facultad de Ingeniería",
-                      "Joaquín Oramas, Director del Centro de Computo",
+                     "Joaquín Oramas, Director del Centro de Computo",
                       "Fanny Córdoba de la Rotta, Secretaria General Facultad de Ingeniería",
                       "Bloque W",
                       "Camino hacia la Facultad de Ingeniería",
