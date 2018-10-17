@@ -44,34 +44,34 @@ namespace ControlGestureHand
             //asigno mi kinect a mi region
             mikinectRegion.KinectSensor = miKinect;
 
-           // leerJson();
+            //leerJson();
         }
-        /*
-                struct MyFile
-                {
-                    public String directory;
-                    public ImageInfo[] images;
-                }
+       /*
+        struct MyFile
+        {
+            public String directory;
+            public ImageInfo[] images;
+        }
 
-                 struct ImageInfo
-                {
-                    public String filename;
-                    public String title;
-                }
+            struct ImageInfo
+        {
+            public String filename;
+            public String title;
+        }
 
-                private void leerJson()
-                {
+        private void leerJson()
+        {
 
-                    //string urIm = "Data/dataImages.json";
-                    //Uri resourceUri = new Uri(urIm, UriKind.Relative);
+            string urIm = "Data/dataImages.json";
+            Uri resourceUri = new Uri(urIm, UriKind.Relative);
 
-                    //var stream = File.OpenRead("Data/dataImages.json");
+            var stream = File.OpenRead(urIm);
 
-                    //String p = @"..\..\..\Data\dataImages.json";
-                    //MyFile f = JsonConvert.DeserializeObject<MyFile>("Data/dataImages.json");
+            String p = @"..\..\..\Data\dataImages.json";
+            MyFile f = JsonConvert.DeserializeObject<MyFile>("Data/dataImages.json");
 
-                }*/
-        
+        }
+        ///*/
         string[] descrip = new string[27]
                    { "Bloque W. Facultad de Ingeniería",
                      "Francisco Rueda",

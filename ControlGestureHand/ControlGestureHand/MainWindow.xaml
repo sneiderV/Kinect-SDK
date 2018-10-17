@@ -6,6 +6,7 @@
         xmlns:k="http://schemas.microsoft.com/kinect/2014"
         xmlns:local="clr-namespace:ControlGestureHand"
         mc:Ignorable="d"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         Title="MainWindow" Height="808.734" Width="1534.098" Loaded="Window_Loaded" Closing="Window_Closing"
         >
     <Grid Margin="0,0,291,0">
@@ -16,10 +17,17 @@
         <Grid Margin="1240,0,-297,0" Height="778" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="292" Background="Black">
             <k:KinectUserViewer Height="196" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,567,10,0" Width="282" />
             <TextBlock HorizontalAlignment="Left" Margin="10,567,0,0" TextWrapping="Wrap" Text="¿Puedes verte aquí?" VerticalAlignment="Top" Foreground="#FFFDECEC" Cursor="Arrow" Width="255" FontSize="30" FontStyle="Italic"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,337,0,0" TextWrapping="Wrap" Text="Tu comentario nos interesa" VerticalAlignment="Top" Foreground="#FFFDECEC" Cursor="Arrow" Width="292" FontSize="25" FontStyle="Italic"/>
-            <TextBlock x:Name="tx_b_descripcion" HorizontalAlignment="Left" Margin="22,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="184" Width="255" FontSize="30" Foreground="#FFD1BB3C" FontStyle="Italic"><Run Text="Levanta una mano y s"/><Run Text="elecciona una imagen"/><Run Text=", cierra la mano y arrastra."/></TextBlock>
-            <TextBlock x:Name="instru" HorizontalAlignment="Left" Margin="0,509,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="58" Width="292" FontSize="15" Foreground="#FFE8E0B2" FontStyle="Italic"><Run Text="Levanta una mano y s"/><Run Text="elecciona una imagen"/><Run Text=", cierra la mano y arrastra."/></TextBlock>
-            <Rectangle HorizontalAlignment="Left" Height="100" Margin="94,404,0,0" Stroke="Black" VerticalAlignment="Top" Width="100">
+            <TextBlock HorizontalAlignment="Center" Margin="23,460,14,0" TextWrapping="Wrap" Text="Tu comentario nos interesa" VerticalAlignment="Top" Foreground="#FFFDECEC" Cursor="Arrow" Width="255" FontSize="20" FontStyle="Italic"/>
+            <TextBlock Margin="0,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFDECEC" Cursor="None" Width="292" FontSize="20" HorizontalAlignment="Center" TextOptions.TextHintingMode="Fixed">
+                <TextBlock.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF290C0C" Offset="1"/>
+                    </RadialGradientBrush>
+                </TextBlock.Background><Run Text="Este año celebramos los 50 años de nuestro departamento, aquí puedes ver el trayecto desde "/><Run Text="1968."/></TextBlock>
+            <TextBlock x:Name="tx_b_descripcion" HorizontalAlignment="Left" Margin="16,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="46" Width="267" FontSize="30" Foreground="#FFD1BB3C" FontStyle="Italic"><Run Text="Instrucciones"/><Run Text=" de uso"/></TextBlock>
+            <TextBlock x:Name="instru" HorizontalAlignment="Left" Margin="31,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="239" FontSize="15" Foreground="#FFE8E0B2" FontStyle="Italic"><Run Text="Levanta una mano"/><Run Text=" para reconoce"/><Run Text="rla"/></TextBlock>
+            <Rectangle HorizontalAlignment="Left" Margin="103,492,0,0" Stroke="Black" VerticalAlignment="Top" Width="75"  Height="75">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="Images/QR_Form.png"/>
                 </Rectangle.Fill>
@@ -29,6 +37,13 @@
                     <ImageBrush ImageSource="Images/50-anos-enge-sistemas-n.jpg"/>
                 </Rectangle.Fill>
             </Rectangle>
+            <!-- -->
+            <Image x:Name="select_gif" gif:ImageBehavior.RepeatBehavior="Forever" gif:ImageBehavior.AnimatedSource="Images\select.gif" HorizontalAlignment="Left" Height="73" Margin="11,330,0,0" VerticalAlignment="Top" Width="72" Source="Images/select.gif"/>
+            <Image x:Name="drag_gif" gif:ImageBehavior.RepeatBehavior="Forever" gif:ImageBehavior.AnimatedSource="Images\drop.gif" HorizontalAlignment="Left" Height="73" Margin="111,330,0,0" VerticalAlignment="Top" Width="72" Source="Images/drop.gif"/>
+            <Image x:Name="grab_gif" gif:ImageBehavior.RepeatBehavior="Forever" gif:ImageBehavior.AnimatedSource="Images\grap.gif" HorizontalAlignment="Left" Height="73" Margin="211,330,0,0" VerticalAlignment="Top" Width="72" Source="Images/grap.gif"/>
+            <TextBlock x:Name="tx_b_select" HorizontalAlignment="Left" Margin="16,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="67" FontSize="13" Foreground="#FFF1F1F1" Text="Seleccionar"/>
+            <TextBlock x:Name="tx_b_drag" HorizontalAlignment="Left" Margin="123,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="51" FontSize="13" Foreground="#FFF1F1F1" Text="Arrastrar"/>
+            <TextBlock x:Name="tx_b_grab" HorizontalAlignment="Left" Margin="226,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="44" FontSize="13" Foreground="#FFF1F1F1" Text="Agarrar"/>
         </Grid>
         <k:KinectRegion x:Name="mikinectRegion">
 

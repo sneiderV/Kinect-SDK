@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,6 +58,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.17\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -202,6 +206,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\50-anos-enge-sistemas-n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\drop.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\select.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\grap.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
