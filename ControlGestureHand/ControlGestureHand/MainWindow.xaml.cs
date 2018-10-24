@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,10 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Resources;
 using Newtonsoft.Json;
+using Tweetinvi;
+using Tweetinvi.Models;
+using Tweetinvi.Parameters;
+using System.Collections.Generic;
 
 namespace ControlGestureHand
 {
@@ -28,8 +33,15 @@ namespace ControlGestureHand
     /// </summary>
     public partial class MainWindow : Window
     {
+        /*Twitter*/
+        const string CONSUMER_KEY = "a2mVCms5rkDNxgwUEFdy4oOfE";
+        const string CONSUMER_SECRET = "ahwcSlg5ENtjmIP820NptGP1QItCJJHYY0SxcvXOIkHEsZmBfd";
+        const string ACCESS_TOKEN = "889371522648993792-33Ol8hQUocGSUV8hYEPKv4GHULn15Dw";
+        const string ACCESS_TOKEN_SECRET = "WQfH4NZYdyEK9D11R0u0ibKnfQ9m5NPXM1IobkLPl0nJh";
+
         KinectSensor miKinect;
         List <String> dataDescrip;
+        ArrayList listaTweets;
 
         public MainWindow()
         {
@@ -44,8 +56,46 @@ namespace ControlGestureHand
             //asigno mi kinect a mi region
             mikinectRegion.KinectSensor = miKinect;
 
+            //autenticación con twitter
+            Auth.SetUserCredentials(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
+
+            //Ejecutando el streaming de tweets en background
+            BackgroundWorker streamBack = new BackgroundWorker();
+            streamBack.DoWork += streamingTweets;
+            //streamBack.RunWorkerCompleted += mostrarTweets();
+            streamBack.RunWorkerAsync();
+            
+            listaTweets = new ArrayList();
             //leerJson();
         }
+
+        /// <summary>
+        /// Hace el streaming de los tweets con el hashtag #KinectUniandes
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="args"></param>
+        private void streamingTweets(object o, DoWorkEventArgs args)
+        {
+            ArrayList twetts = new ArrayList();
+            //strean
+                var stream = Tweetinvi.Stream.CreateFilteredStream();
+            //palabra a seguir
+                stream.AddTrack("#KinectUniandes");
+            //manejo de tweets
+            Console.WriteLine("-----------------> Escuchando tweets ");
+                stream.MatchingTweetReceived += (sender, arg) =>
+                {
+                    Console.WriteLine(arg.Tweet.Text);
+                    twetts.Add(arg.Tweet);
+                    listaTweets = twetts;
+                    listaTweets.Add(arg.Tweet);
+
+                };
+            stream.PauseStream();
+            stream.StartStreamMatchingAllConditions();
+        }
+
+        
        /*
         struct MyFile
         {
@@ -101,6 +151,7 @@ namespace ControlGestureHand
                       "Rector Eduardo Aldana Valdéz, 1973-1975",
                       "Joaquín Oramas, Director del Centro de Cómputo"
                    };
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //var brush = new ImageBrush();
@@ -121,11 +172,9 @@ namespace ControlGestureHand
                 BitmapFrame temp = BitmapFrame.Create(streamInfo.Stream);
 
                 //ajuste del tamaño 
-                button.Height = 600;
+                button.Height = 460;
                 button.Width = (button.Height * temp.Width) / temp.Height;
-                
-                
-                
+                              
                 var brush = new ImageBrush();
                 brush.ImageSource = temp;
                 button.Background = brush;
@@ -174,7 +223,19 @@ namespace ControlGestureHand
             }
         }
 
-        //Handle de los botones del scroll
+        private void mostrarTweets()
+        {
+           
+                for (int i = 0; 0 < listaTweets.Count; i++)
+                {
+                    Console.WriteLine("----:::: va uno mas");
+                    Console.WriteLine(listaTweets.Count);
+                
+                }
+            
+            text_last_tweet.Text = "No hay tweets aún";
+        }
+        ///Handle de los botones del scroll
         private void Button_Click_Scroll_Item(object sender, RoutedEventArgs e)
         {
             String res = sender.ToString();
@@ -188,10 +249,35 @@ namespace ControlGestureHand
             tx_b_descripcion.Text = n ;
         }
 
-        //libero los recursos de la kinect 
+        
+       
+
+        /// <summary>
+        /// Muestra el último Tweet del streaming
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void getTweets_Click(object sender, RoutedEventArgs e)
+        {
+            if (listaTweets.Count>0)
+            {
+                Object [] li = listaTweets.ToArray();
+                text_last_tweet.Text = "Este es el último Tweet: "+li[li.Length - 1];
+            }
+            else
+            {
+                text_last_tweet.Text = "No hay tweets aún usa el siguiente hashtag #KinectUniandes";
+            }
+        }
+
+        /// <summary>
+        /// Libera los recursos de la Kinect
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if(miKinect != null)
+            if (miKinect != null)
             {
                 miKinect.Close();
                 miKinect = null;

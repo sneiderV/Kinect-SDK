@@ -73,6 +73,16 @@ namespace ControlGestureHand.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gif_gestures {
+            get {
+                object obj = ResourceManager.GetObject("gif_gestures", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap grap {
             get {
                 object obj = ResourceManager.GetObject("grap", resourceCulture);
