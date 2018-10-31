@@ -1,0 +1,31 @@
+﻿<Window x:Class="KinectTwitter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:k="http://schemas.microsoft.com/kinect/2014"
+        xmlns:local="clr-namespace:KinectTwitter"
+        mc:Ignorable="d"
+        Title="Kinect and Twitter" Height="800" Width="1500" Loaded="Window_Loaded" MouseEnter="Window_MouseEnter">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/mario laserna baja.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <k:KinectRegion x:Name="mikinectRegion" HorizontalAlignment="Left" Width="1500" Height="769" VerticalAlignment="Top" Margin="0,0,-8,0">
+            <Grid HorizontalAlignment="Left" Height="769" VerticalAlignment="Top" Width="1071">
+                <ScrollViewer x:Name="scrollTweets" Width="1061" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled"
+                          k:KinectRegion.IsScrollInertiaEnabled="true" Margin="5,5,5,10">
+                    <StackPanel x:Name="miScrollContent" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </ScrollViewer>
+
+                <!--Region izq-->
+                <Grid Margin="1066,0,-418,0" Background="#72000000">
+                    <k:KinectUserViewer Height="173" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,586,0,0" Width="285" />
+                    <Label Content="#KinectUniandes" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Height="88" Width="403" Background="#00000000" FontWeight="Bold" FontSize="48" Foreground="White"/>
+                    
+                </Grid>
+            </Grid>
+
+        </k:KinectRegion>
+    </Grid>
+</Window>
