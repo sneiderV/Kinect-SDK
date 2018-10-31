@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 using Microsoft.Kinect;
 using Microsoft.Kinect.Wpf.Controls;
 using Tweetinvi;
-
+using System.Globalization;
 
 namespace KinectTwitter
 {
@@ -89,13 +89,13 @@ namespace KinectTwitter
                 {
                     Console.WriteLine(tweets[i]);
                     var tw = (OneTweet)tweets[i];
-                    var t = new TweetK(tw.userName, "@ISIS", "50 años", "1 Nov");
+                    var t = new TweetK(tw.userName, tw.userId, tw.content, tw.date);
                     miScrollContent.Children.Add(t);
                 }
             }
             else
             {
-                for (int i = 0; i < 5 ; i++)
+                for (int i = 0; i < 4 ; i++)
                 {
                     var t = new TweetK("Uniandes", "@Uniandes", "ISIS Celebrando los 50 años", "1 Nov");
                     miScrollContent.Children.Add(t);
@@ -118,26 +118,18 @@ namespace KinectTwitter
             String hashtag = "#KinectUniandes";
             stream.AddTrack(hashtag);
             //manejo de tweets
-            Console.WriteLine("::-----------> Escuchando tweets para "+hashtag);
+            Console.WriteLine("-----------> Escuchando tweets para "+hashtag);
             stream.MatchingTweetReceived += (sender, arg) =>
             {
-                Console.WriteLine(arg.Tweet.Text);
-                String nom = arg.Tweet.CreatedAt.DayOfWeek.ToString();
-                String usId = arg.Tweet.CreatedBy.Name;
-                String cont = "@" + arg.Tweet.CreatedBy.ScreenName;
-                String dat = arg.Tweet.FullText;
+                Console.WriteLine("Entra ---> "+arg.Tweet.Text);
+                String dat = arg.Tweet.CreatedAt.DayOfWeek.ToString()+" "+ arg.Tweet.CreatedAt.Day+" "+ CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(arg.Tweet.CreatedAt.Month);
+                String nom = arg.Tweet.CreatedBy.Name;
+                String usId = "@" + arg.Tweet.CreatedBy.ScreenName;
+                String cont = arg.Tweet.FullText;
 
                 //var t = new TweetK(nom,usId,cont,dat);
                 var t = new OneTweet(nom,usId,cont,dat);
-
-                dynamic te = new ExpandoObject();
-                te.nom = arg.Tweet.CreatedAt.DayOfWeek.ToString();
-                te.usid = arg.Tweet.CreatedBy.Name;
-                te.cont = "@" + arg.Tweet.CreatedBy.ScreenName;
-                te.dat = arg.Tweet.FullText;
-
-                
-
+                              
                 pilaTweets.Push(arg.Tweet);
 
                 twetts.Add(arg.Tweet);

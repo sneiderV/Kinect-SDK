@@ -17,9 +17,9 @@ namespace KinectTwitter
 
         }
 
-        public string userName { get; set; }
-        public string userId { get; set; }
-        public string content { get; set; }
-        public string date { get; set; }
+        public String userName { get; set; }
+        public String userId { get; set; }
+        public String content { get; set; }
+        public String date { get; set; }
     }
 }
