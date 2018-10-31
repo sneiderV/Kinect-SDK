@@ -121,6 +121,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="OneTweet.cs" />
     <Compile Include="TweetK.xaml.cs">
       <DependentUpon>TweetK.xaml</DependentUpon>
     </Compile>

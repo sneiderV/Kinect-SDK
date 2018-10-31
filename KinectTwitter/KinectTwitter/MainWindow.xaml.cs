@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Dynamic;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,13 +82,14 @@ namespace KinectTwitter
         public void pintarTweets( ArrayList tweets)
         {
             tweets.Reverse();
-
-            if (tweets.Count >= 0)
+            miScrollContent.Children.Clear();
+            if (tweets.Count > 0)
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < tweets.Count; i++)
                 {
                     Console.WriteLine(tweets[i]);
-                    var t = new TweetK("ISIS", "@ISIS", "50 años", "1 Nov");
+                    var tw = (OneTweet)tweets[i];
+                    var t = new TweetK(tw.userName, "@ISIS", "50 años", "1 Nov");
                     miScrollContent.Children.Add(t);
                 }
             }
@@ -94,7 +97,7 @@ namespace KinectTwitter
             {
                 for (int i = 0; i < 5 ; i++)
                 {
-                    var t = new TweetK("UniandesISIS", "@UniandesISIS", "Celebrando los 50 años", "1 Nov");
+                    var t = new TweetK("Uniandes", "@Uniandes", "ISIS Celebrando los 50 años", "1 Nov");
                     miScrollContent.Children.Add(t);
                 }
             }
@@ -123,13 +126,23 @@ namespace KinectTwitter
                 String usId = arg.Tweet.CreatedBy.Name;
                 String cont = "@" + arg.Tweet.CreatedBy.ScreenName;
                 String dat = arg.Tweet.FullText;
-               // var t = new TweetK(nom,usId,cont,dat);
+
+                //var t = new TweetK(nom,usId,cont,dat);
+                var t = new OneTweet(nom,usId,cont,dat);
+
+                dynamic te = new ExpandoObject();
+                te.nom = arg.Tweet.CreatedAt.DayOfWeek.ToString();
+                te.usid = arg.Tweet.CreatedBy.Name;
+                te.cont = "@" + arg.Tweet.CreatedBy.ScreenName;
+                te.dat = arg.Tweet.FullText;
+
+                
 
                 pilaTweets.Push(arg.Tweet);
 
                 twetts.Add(arg.Tweet);
-                listaTweets = twetts;
-                listaTweets.Add(arg.Tweet);
+
+                listaTweets.Add(t);
 
             };
             stream.StartStreamMatchingAllConditions();
