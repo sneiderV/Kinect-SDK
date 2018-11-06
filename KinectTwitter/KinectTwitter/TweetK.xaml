@@ -43,7 +43,10 @@
                 <ImageBrush ImageSource="Images/like.png"/>
             </Image.OpacityMask>
         </Image>
-        <Rectangle x:Name="rt_img" HorizontalAlignment="Left" Height="100" Margin="292,186,0,0" VerticalAlignment="Top" Width="100">
+        <Rectangle x:Name="rt_img" HorizontalAlignment="Left"  Margin="84,212,0,0" VerticalAlignment="Top" Height="74" Width="268" >
+            <Rectangle.Fill>
+                <ImageBrush/>
+            </Rectangle.Fill>
             <Rectangle.Stroke>
                 <ImageBrush
       />

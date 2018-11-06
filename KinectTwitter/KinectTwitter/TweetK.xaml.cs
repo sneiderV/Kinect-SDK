@@ -62,6 +62,7 @@ namespace KinectTwitter
                 bi.BeginInit();
                 bi.CacheOption = BitmapCacheOption.OnLoad;
                 bi.StreamSource = stream;
+                
                 //bi.UriSource = new System.Uri("");
                 bi.EndInit();
 
