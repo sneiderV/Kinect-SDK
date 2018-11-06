@@ -20,6 +20,7 @@ using Microsoft.Kinect;
 using Microsoft.Kinect.Wpf.Controls;
 using Tweetinvi;
 using System.Globalization;
+using System.Threading;
 
 namespace KinectTwitter
 {
@@ -37,8 +38,11 @@ namespace KinectTwitter
 
         KinectSensor miKinect;
 
-        Stack pilaTweets;
+       
         ArrayList listaTweets;
+
+        //Hilo para refrescar la pantalla
+        Thread hiloRefresh;
 
         public MainWindow()
         {
@@ -62,9 +66,15 @@ namespace KinectTwitter
             //streamBack.RunWorkerCompleted += mostrarTweets();
             streamBack.RunWorkerAsync();
 
-            pilaTweets = new Stack();
             listaTweets = new ArrayList();
-                        
+
+            
+
+            //manejo del hilo 
+         /*   ThreadStart ts = new ThreadStart(pintarTweets);
+            hiloRefresh = new Thread(ts);
+           hiloRefresh.Start();
+           */             
         }
 
         /// <summary>
@@ -74,34 +84,44 @@ namespace KinectTwitter
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            pintarTweets(listaTweets);
+            tweetsIniciales();
         }
 
-        
-
-        public void pintarTweets( ArrayList tweets)
+        /// <summary>
+        /// Pinto unas ventanas en blanco para dar inicio a la aplicación 
+        /// </summary>
+        public void tweetsIniciales()
         {
-            tweets.Reverse();
-            miScrollContent.Children.Clear();
-            if (tweets.Count > 0)
+            for (int i = 0; i < 3; i++)
             {
-                for (int i = 0; i < tweets.Count; i++)
+                var t = new TweetK("Uniandes", "@Uniandes", "ISIS Celebrando los 50 años", "1 Nov","");
+                miScrollContent.Children.Add(t);
+            }
+        }
+
+
+        public void pintarTweets()
+        {
+           
+            if (listaTweets.Count > 0)
+            {
+                Console.WriteLine("entre al if");
+                
+                listaTweets.Reverse();
+                miScrollContent.Children.Clear();
+                for (int i = 0; i < listaTweets.Count; i++)
                 {
-                    Console.WriteLine(tweets[i]);
-                    var tw = (OneTweet)tweets[i];
-                    var t = new TweetK(tw.userName, tw.userId, tw.content, tw.date);
+                    //Console.WriteLine(listaTweets[i]);
+                    var tw = (OneTweet)listaTweets[i];
+                    var t = new TweetK(tw.userName, tw.userId, tw.content, tw.date, tw.urlImage);
                     miScrollContent.Children.Add(t);
                 }
             }
             else
             {
-                for (int i = 0; i < 4 ; i++)
-                {
-                    var t = new TweetK("Uniandes", "@Uniandes", "ISIS Celebrando los 50 años", "1 Nov");
-                    miScrollContent.Children.Add(t);
-                }
+                Console.WriteLine("---> no hay tweets aún");
             }
-            
+                       
         }
 
         /// <summary>
@@ -121,32 +141,36 @@ namespace KinectTwitter
             Console.WriteLine("-----------> Escuchando tweets para "+hashtag);
             stream.MatchingTweetReceived += (sender, arg) =>
             {
-                Console.WriteLine("Entra ---> "+arg.Tweet.Text);
+                Console.WriteLine("Entra ---> "+arg);
                 String dat = arg.Tweet.CreatedAt.DayOfWeek.ToString()+" "+ arg.Tweet.CreatedAt.Day+" "+ CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(arg.Tweet.CreatedAt.Month);
                 String nom = arg.Tweet.CreatedBy.Name;
                 String usId = "@" + arg.Tweet.CreatedBy.ScreenName;
                 String cont = arg.Tweet.FullText;
+                String urlImagen = "";
+
+                if (arg.Tweet.Media.Count>0)
+                {
+                    urlImagen = arg.Tweet.Media[0].MediaURL;
+                }
 
                 //var t = new TweetK(nom,usId,cont,dat);
-                var t = new OneTweet(nom,usId,cont,dat);
-                              
-                pilaTweets.Push(arg.Tweet);
-
+                var t = new OneTweet(nom,usId,cont,dat,urlImagen);
+                
                 twetts.Add(arg.Tweet);
 
                 listaTweets.Add(t);
-
             };
             stream.StartStreamMatchingAllConditions();
         }
 
-        
         private void Window_MouseEnter(object sender, MouseEventArgs e)
         {
-            pintarTweets(listaTweets);
+            Console.WriteLine("actualizare");
+            pintarTweets();
         }
 
-       
+        //Console.WriteLine("1");
+
     }
 }
 /*
