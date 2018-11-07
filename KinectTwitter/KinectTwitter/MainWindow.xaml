@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:KinectTwitter"
         mc:Ignorable="d"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
-        Title="Kinect and Twitter" Height="800" Width="1500" Loaded="Window_Loaded" MouseEnter="Window_MouseEnter">
+        Title="Kinect and Twitter" Height="800" Width="1500" Loaded="Window_Loaded" >
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/mario laserna baja.jpg" Stretch="UniformToFill"/>
@@ -22,8 +22,9 @@
                 <!--Region izq-->
                 <Grid Margin="1066,0,-418,0" Background="#72000000">
                     <k:KinectUserViewer Height="173" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,586,0,0" Width="285" />
-                    <Label Content="#KinectUniandes" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Height="88" Width="403" Background="#00000000" FontWeight="Bold" FontSize="48" Foreground="White"/>
-                    <Image x:Name="gif_instru" gif:ImageBehavior.RepeatBehavior="Forever" gif:ImageBehavior.AnimatedSource="Images\drop.gif" HorizontalAlignment="Left" Height="161" Margin="133,161,0,0" VerticalAlignment="Top" Width="170"/>
+                    <Label Content="#KinectUniandes" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Height="73" Width="403" Background="#00000000" FontWeight="Bold" FontSize="48" Foreground="White"/>
+                    <Image x:Name="gif_instru" gif:ImageBehavior.RepeatBehavior="Forever" gif:ImageBehavior.AnimatedSource="Images\drop.gif" HorizontalAlignment="Left" Height="150" Margin="134,191,0,0" VerticalAlignment="Top" Width="150"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="45,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" Foreground="White" Width="329" Text="Crea un Tweet con" />
 
                 </Grid>
             </Grid>

@@ -21,6 +21,7 @@ using Microsoft.Kinect.Wpf.Controls;
 using Tweetinvi;
 using System.Globalization;
 using System.Threading;
+using System.Windows.Threading;
 
 namespace KinectTwitter
 {
@@ -43,6 +44,8 @@ namespace KinectTwitter
 
         //Hilo para refrescar la pantalla
         Thread hiloRefresh;
+
+        DispatcherTimer dispatcherTimer;
 
         public MainWindow()
         {
@@ -68,13 +71,30 @@ namespace KinectTwitter
 
             listaTweets = new ArrayList();
 
-            
-
+            /*
             //manejo del hilo 
-         /*   ThreadStart ts = new ThreadStart(pintarTweets);
+            ThreadStart ts = new ThreadStart(pintarTweets);
             hiloRefresh = new Thread(ts);
-           hiloRefresh.Start();
-           */             
+            hiloRefresh.Start();
+            */
+
+            //DispatcherTimer cada 2 segundos
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0,0,2);
+            dispatcherTimer.Start();
+
+        }
+
+        /// <summary>
+        /// Es el manejador de eventos para el DispatcherTimer 
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="e"></param>
+        private void dispatcherTimer_Tick(object o, EventArgs e)
+        {
+            Console.WriteLine("en el Timer");
+            pintarTweets();
         }
 
         /// <summary>
@@ -88,7 +108,7 @@ namespace KinectTwitter
         }
 
         /// <summary>
-        /// Pinto unas ventanas en blanco para dar inicio a la aplicación 
+        /// Pinto unos tweets en blanco para dar inicio a la aplicación 
         /// </summary>
         public void tweetsIniciales()
         {
@@ -99,19 +119,18 @@ namespace KinectTwitter
             }
         }
 
-
+        /// <summary>
+        ///Pinta en el carrusel los tweets que esten en streaming 
+        /// </summary>
         public void pintarTweets()
         {
            
             if (listaTweets.Count > 0)
             {
-                Console.WriteLine("entre al if");
-                
                 listaTweets.Reverse();
                 miScrollContent.Children.Clear();
                 for (int i = 0; i < listaTweets.Count; i++)
                 {
-                    //Console.WriteLine(listaTweets[i]);
                     var tw = (OneTweet)listaTweets[i];
                     var t = new TweetK(tw.userName, tw.userId, tw.content, tw.date, tw.urlImage);
                     miScrollContent.Children.Add(t);
@@ -141,11 +160,11 @@ namespace KinectTwitter
             Console.WriteLine("-----------> Escuchando tweets para "+hashtag);
             stream.MatchingTweetReceived += (sender, arg) =>
             {
-                Console.WriteLine("Entra ---> "+arg);
+                Console.WriteLine("Entra ---> "+arg.Tweet.Text);
                 String dat = arg.Tweet.CreatedAt.DayOfWeek.ToString()+" "+ arg.Tweet.CreatedAt.Day+" "+ CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(arg.Tweet.CreatedAt.Month);
                 String nom = arg.Tweet.CreatedBy.Name;
                 String usId = "@" + arg.Tweet.CreatedBy.ScreenName;
-                String cont = arg.Tweet.FullText;
+                String cont = arg.Tweet.Text;
                 String urlImagen = "";
 
                 if (arg.Tweet.Media.Count>0)
@@ -163,19 +182,5 @@ namespace KinectTwitter
             stream.StartStreamMatchingAllConditions();
         }
 
-        private void Window_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Console.WriteLine("actualizare");
-            pintarTweets();
-        }
-
-        //Console.WriteLine("1");
-
     }
 }
-/*
-fecha: arg.Tweet.CreatedAt.DayOfWeek (int)
-nombre: arg.Tweet.CreatedBy.Name (String)
-userId: arg.Tweet.CreatedBy.ScreenName (String)+@
-content: arg.Tweet.FullText (String)
- */
