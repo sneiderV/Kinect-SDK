@@ -41,9 +41,10 @@ namespace KinectTwitter
 
        
         ArrayList listaTweets;
+        int numTweets;
 
         //Hilo para refrescar la pantalla
-        Thread hiloRefresh;
+        //Thread hiloRefresh;
 
         DispatcherTimer dispatcherTimer;
 
@@ -70,6 +71,7 @@ namespace KinectTwitter
             streamBack.RunWorkerAsync();
 
             listaTweets = new ArrayList();
+            numTweets = 0;
 
             /*
             //manejo del hilo 
@@ -125,8 +127,9 @@ namespace KinectTwitter
         public void pintarTweets()
         {
            
-            if (listaTweets.Count > 0)
+            if (listaTweets.Count > 0 && numTweets < listaTweets.Count)
             {
+                numTweets = listaTweets.Count;
                 listaTweets.Reverse();
                 miScrollContent.Children.Clear();
                 for (int i = 0; i < listaTweets.Count; i++)
@@ -138,7 +141,7 @@ namespace KinectTwitter
             }
             else
             {
-                Console.WriteLine("---> no hay tweets aún");
+                Console.WriteLine("--> no hay tweets aún");
             }
                        
         }
