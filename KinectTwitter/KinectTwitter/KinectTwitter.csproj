@@ -190,5 +190,8 @@
   <ItemGroup>
     <Resource Include="Images\drop.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\QR K+T.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

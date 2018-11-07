@@ -25,6 +25,13 @@
                     <Label Content="#KinectUniandes" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Height="73" Width="403" Background="#00000000" FontWeight="Bold" FontSize="48" Foreground="White"/>
                     <Image x:Name="gif_instru" gif:ImageBehavior.RepeatBehavior="Forever" gif:ImageBehavior.AnimatedSource="Images\drop.gif" HorizontalAlignment="Left" Height="150" Margin="134,191,0,0" VerticalAlignment="Top" Width="150"/>
                     <TextBlock HorizontalAlignment="Left" Margin="45,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" Foreground="White" Width="329" Text="Crea un Tweet con" />
+                    <Label Content="Tu opinión es valiosa" HorizontalAlignment="Left" Margin="10,346,0,0" VerticalAlignment="Top" Height="73" Width="403" Background="#00000000" FontWeight="Bold" FontSize="38" Foreground="White"/>
+                    <Rectangle HorizontalAlignment="Left" Height="100" Margin="161,419,0,0" VerticalAlignment="Top" Width="100">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="Images/QR K+T.png"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+
 
                 </Grid>
             </Grid>

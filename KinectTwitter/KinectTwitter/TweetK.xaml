@@ -17,40 +17,30 @@
         <Label x:Name="userId" Content="@User id" Margin="270,56,10,0" FontFamily="Microsoft YaHei UI" FontSize="16" Background="#00000000" Foreground="#FF818181" Height="30" VerticalAlignment="Top"/>
         <Label x:Name="date" Content="Date" Margin="70,80,23,0" FontFamily="Microsoft YaHei UI" FontSize="16" Foreground="#FF818181" Height="30" VerticalAlignment="Top"/>
         <TextBlock x:Name="contentTweet" HorizontalAlignment="Left" Margin="84,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="87" Width="308" FontFamily="Microsoft YaHei UI" FontSize="14"><Run Text="Content of the tweet "/><Run Text="..."/></TextBlock>
-        <Rectangle HorizontalAlignment="Left" Height="24" Margin="95,286,0,0" Stroke="#00000000" VerticalAlignment="Top" Width="24">
+ <!--   <Rectangle HorizontalAlignment="Left" Height="24" Margin="95,286,0,0" Stroke="#00000000" VerticalAlignment="Top" Width="24">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Images/message.png"/>
             </Rectangle.Fill>
-        </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="24" Margin="190,286,0,0" VerticalAlignment="Top" Width="24">
+        </Rectangle> -->
+<!--    <Rectangle HorizontalAlignment="Left" Height="24" Margin="190,286,0,0" VerticalAlignment="Top" Width="24">
             <Rectangle.Stroke>
                 <ImageBrush/>
             </Rectangle.Stroke>
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Images/retweet.png"/>
             </Rectangle.Fill>
-        </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="24" Margin="285,286,0,0" VerticalAlignment="Top" Width="24">
+        </Rectangle> -->
+<!--       <Rectangle HorizontalAlignment="Left" Height="24" Margin="285,286,0,0" VerticalAlignment="Top" Width="24">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Images/like.png"/>
             </Rectangle.Fill>
             <Rectangle.Stroke>
                 <ImageBrush/>
             </Rectangle.Stroke>
-        </Rectangle>
-        <Image x:Name="img_tweet" HorizontalAlignment="Left" Height="69" Margin="190,212,0,0" VerticalAlignment="Top" Width="74">
-            <Image.OpacityMask>
-                <ImageBrush ImageSource="Images/like.png"/>
-            </Image.OpacityMask>
-        </Image>
-        <Rectangle x:Name="rt_img" HorizontalAlignment="Left"  Margin="84,212,0,0" VerticalAlignment="Top" Height="74" Width="268" >
-            <Rectangle.Fill>
-                <ImageBrush/>
-            </Rectangle.Fill>
-            <Rectangle.Stroke>
-                <ImageBrush
-      />
-            </Rectangle.Stroke>
+        </Rectangle> -->
+        
+        <Rectangle x:Name="rt_img" HorizontalAlignment="Left"  Margin="84,212,0,0" VerticalAlignment="Top" Height="127" Width="268" >
+            
         </Rectangle>
 
     </Grid>
