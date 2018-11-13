@@ -130,9 +130,9 @@ namespace KinectTwitter
             if (listaTweets.Count > 0 && numTweets < listaTweets.Count)
             {
                 numTweets = listaTweets.Count;
-                listaTweets.Reverse();
+                //listaTweets.Reverse();
                 miScrollContent.Children.Clear();
-                for (int i = 0; i < listaTweets.Count; i++)
+                for (int i = listaTweets.Count-1; i >= 0; i--)
                 {
                     var tw = (OneTweet)listaTweets[i];
                     var t = new TweetK(tw.userName, tw.userId, tw.content, tw.date, tw.urlImage);
@@ -157,7 +157,8 @@ namespace KinectTwitter
             //strean
             var stream = Tweetinvi.Stream.CreateFilteredStream();
             //palabra a seguir
-            String hashtag = "#KinectUniandes";
+            //String hashtag = "#KinectUniandes";
+            String hashtag = "#PruebaKinect";
             stream.AddTrack(hashtag);
             //manejo de tweets
             Console.WriteLine("-----------> Escuchando tweets para "+hashtag);
